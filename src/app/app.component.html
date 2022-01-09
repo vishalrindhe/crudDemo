@@ -1,0 +1,61 @@
+<div class="mx-4">
+  <div class="row mt-4 mb-4">
+    <div class="col-12 col-md-3 col-lg-3">
+      <!-- form for Add/ Update -->
+      <app-form [i]="data.flag"></app-form>
+    </div>
+
+    <div class="col-12 col-md-9 col-lg-9 card pt-3">
+      <div class="row pb-4">
+        <div class="center">
+          <h4>&nbsp;&nbsp; User List</h4>
+        </div>
+      </div>
+      <!-- table for listout entries -->
+      <div class="table-responsive-xl">
+        <table class="container table table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">About me</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <!-- dataArray to display in table can use "filter" pipe for filter out entries according to name  -->
+          <tbody *ngFor="let info of data.dataArray; let i = index">
+            <tr class="hover">
+              <td>{{ i + 1 }}</td>
+              <td>{{ info.name }}</td>
+              <td>{{ info.gender }}</td>
+              <td class="ccol-12 col-md-3 col-lg-3">{{ info.email }}</td>
+              <td>{{ info.phone }}</td>
+              <td>{{ info.message }}</td>
+              <td class="center">
+                <!-- button to delete entry -->
+                <button
+                  class="btn btn-outline-danger"
+                  (click)="deletedata(info._id)"
+                >
+                  Delete
+                </button>
+                &nbsp;
+                <!-- button to edit entry details -->
+                <button
+                  class="btn btn-outline-warning"
+                  (click)="editData(info._id)"
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
